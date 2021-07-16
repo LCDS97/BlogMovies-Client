@@ -29,7 +29,7 @@ function App() {
 
   useEffect(() => {
     axios
-      .get("https://full-stack-api-lcds97.herokuapp.com/users/checkAuth", {
+      .get("http://localhost:3001/users/checkAuth", {
         headers: {
           accessToken: localStorage.getItem("accessToken"),
         },
@@ -62,15 +62,17 @@ function App() {
             <div className="links">
               {!authState.status ? (
                 <>
-                  <div className="links">
-                    <Link to="/login"> Login</Link>
-                    <Link to="/registration"> Registre-se</Link>
+                  <div className="notLoggedInContainer">
+                    {/* <Link to="/login"> Login</Link> */}
+                    <label for="registration" id="register-title">Não é registrado?</label>
+                    <Link to="/registration" id="register-click"> Clique aqui!</Link>
                   </div>
                 </>
               ) : (
                 <>
                   <Link to="/"> Home Page</Link>
                   <Link to="/createpost"> Cria um Post</Link>
+
                   <div className="loggedInContainer">
                     <h2>{authState.username}</h2>
                     <button onClick={logout}> Logout </button>

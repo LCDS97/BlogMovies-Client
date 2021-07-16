@@ -13,11 +13,11 @@ function Post() {
   let history = useHistory();
 
   useEffect(() => {
-    axios.get(`https://full-stack-api-lcds97.herokuapp.com/posts/byId/${id}`).then((response) => {
+    axios.get(`http://localhost:3001/posts/byId/${id}`).then((response) => {
       setPostObject(response.data);
     });
 
-    axios.get(`https://full-stack-api-lcds97.herokuapp.com/comments/${id}`).then((response) => {
+    axios.get(`http://localhost:3001/comments/${id}`).then((response) => {
       setComments(response.data);
     });
   }, [id]);
@@ -25,7 +25,7 @@ function Post() {
   const addComment = () => {
     axios
       .post(
-        "https://full-stack-api-lcds97.herokuapp.com/comments",
+        "http://localhost:3001/comments",
         {
           commentBody: newComment,
           PostId: id,
@@ -52,7 +52,7 @@ function Post() {
 
   const deleteComment = (id) => {
     axios
-      .delete(`https://full-stack-api-lcds97.herokuapp.com/comments/${id}`, {
+      .delete(`http://localhost:3001/comments/${id}`, {
         headers: { accessToken: localStorage.getItem("accessToken") },
       })
       .then(() => {
@@ -66,7 +66,7 @@ function Post() {
 
   const deletePost = (id) => {
     axios
-      .delete(`https://full-stack-api-lcds97.herokuapp.com/posts/${id}`, {
+      .delete(`http://localhost:3001/posts/${id}`, {
         headers: { accessToken: localStorage.getItem("accessToken") },
       })
       .then((response) => {
@@ -78,7 +78,7 @@ function Post() {
     if (option === "title") {
       let newTitle = prompt("Digite o novo titúlo: ");
       axios.put(
-        "https://full-stack-api-lcds97.herokuapp.com/posts/title",
+        "http://localhost:3001/posts/title",
         {
           newTitle: newTitle,
           id: id,
@@ -92,7 +92,7 @@ function Post() {
     } else {
       let newPostText = prompt("Digite a nova postagem: ");
       axios.put(
-        "https://full-stack-api-lcds97.herokuapp.com/posts/postText",
+        "http://localhost:3001/posts/postText",
         {
           newText: newPostText,
           id: id,

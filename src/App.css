@@ -77,6 +77,45 @@ body {
   margin-left: 10px;
 }
 
+button {
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+}
+
+button:after {
+   content: " ";
+   position: absolute;
+   top: -110%;
+   left: -210%;
+   width: 150%;
+   height: 300%;
+   opacity: 0;
+   transform: rotate(30deg);
+
+   background: rgba(25, 7, 185, 0.13);
+   background: linear-gradient(
+     to right, 
+     rgba(255, 255, 255, 0.13) 0%,
+     rgba(255, 255, 255, 0.13) 77%,
+     rgba(255, 255, 255, 0.5) 92%,
+     rgba(255, 255, 255, 0.0) 100%,
+   );
+}
+
+button:hover:after{
+  opacity: 1;
+  top: -30%;
+  left: -30%;
+  transition-property: left, top, opacity;
+  transition-duration: 0.7s, 0.7s, 0.15s;
+  transition-timing-function: ease;
+}
+
+button:active:after{
+  opacity: 0;
+}
+
 /* CREATE POST PAGE CSS */
 
 .createPostPage {
@@ -143,6 +182,23 @@ span {
   align-items: center;
 }
 
+.navbar .notLoggedInContainer {
+  flex: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#register-title {
+  font-size: 30px;
+  position: absolute;
+  left: 60vh;
+  top: 0vh;
+}
+
+
+
 .navbar .loggedInContainer {
   flex: 50%;
   height: 100%;
@@ -150,6 +206,7 @@ span {
   justify-content: flex-end;
   align-items: center;
 }
+
 .navbar a {
   margin-left: 20px;
   text-decoration: none;

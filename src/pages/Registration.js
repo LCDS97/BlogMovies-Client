@@ -19,7 +19,7 @@ function Registration() {
   });
 
   const onSubmit = (data) => {
-      axios.post("https://full-stack-api-lcds97.herokuapp.com/users", data).then(() => {
+      axios.post("http://localhost:3001/users", data).then(() => {
           history.push("/login")
       })
   };
